@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數學幾何計算器 | 面積與距離計算工具</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-calculator"></i> 數學幾何計算器</h1>
+        <p>輕鬆計算各種幾何圖形面積與兩點距離</p>
+    </header>
+
+    <main>
+        <article class="calculator-card">
+            <section class="form-section">
+                <h2 class="section-title">
+                    <i class="fas fa-shapes"></i>
+                    選擇計算類型
+                </h2>
+                
+                <div class="mb-4">
+                    <label for="calculationType" class="form-label">計算類型</label>
+                    <select id="calculationType" class="form-select" required>
+                        <option value="">請選擇計算類型</option>
+                        <option value="equilateral">正三角形面積</option>
+                        <option value="triangle">一般三角形面積</option>
+                        <option value="rectangle">長方形面積</option>
+                        <option value="ellipse">橢圓形面積</option>
+                        <option value="polygon">正多邊形面積</option>
+                        <option value="distance">兩點距離</option>
+                    </select>
+                </div>
+
+                <!-- 正三角形輸入 -->
+                <div id="equilateralInputs" class="dynamic-inputs">
+                    <label for="equilateralSide" class="form-label">邊長</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="equilateralSide" 
+                               placeholder="請輸入邊長" min="0.01" step="0.01" required>
+                        <span class="input-group-text">單位</span>
+                    </div>
+                    <div class="formula-display">
+                        公式: 面積 = (√3 / 4) × 邊長²
+                    </div>
+                </div>
+
+                <!-- 一般三角形輸入 -->
+                <div id="triangleInputs" class="dynamic-inputs">
+                    <label for="triangleBase" class="form-label">底邊</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="triangleBase" 
+                               placeholder="請輸入底邊長度" min="0.01" step="0.01" required>
+                        <span class="input-group-text">單位</span>
+                    </div>
+                    
+                    <label for="triangleHeight" class="form-label">高</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="triangleHeight" 
+                               placeholder="請輸入高度" min="0.01" step="0.01" required>
+                        <span class="input-group-text">單位</span>
+                    </div>
+                    <div class="formula-display">
+                        公式: 面積 = (底 × 高) / 2
+                    </div>
+                </div>
+
+                <!-- 長方形輸入 -->
+                <div id="rectangleInputs" class="dynamic-inputs">
+                    <label for="rectangleLength" class="form-label">長</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="rectangleLength" 
+                               placeholder="請輸入長度" min="0.01" step="0.01" required>
+                        <span class="input-group-text">單位</span>
+                    </div>
+                    
+                    <label for="rectangleWidth" class="form-label">寬</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="rectangleWidth" 
+                               placeholder="請輸入寬度" min="0.01" step="0.01" required>
+                        <span class="input-group-text">單位</span>
+                    </div>
+                    <div class="formula-display">
+                        公式: 面積 = 長 × 寬
+                    </div>
+                </div>
+
+                <!-- 橢圓形輸入 -->
+                <div id="ellipseInputs" class="dynamic-inputs">
+                    <label for="ellipseMajor" class="form-label">長軸半徑 (a)</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="ellipseMajor" 
+                               placeholder="請輸入長軸半徑" min="0.01" step="0.01" required>
+                        <span class="input-group-text">單位</span>
+                    </div>
+                    
+                    <label for="ellipseMinor" class="form-label">短軸半徑 (b)</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="ellipseMinor" 
+                               placeholder="請輸入短軸半徑" min="0.01" step="0.01" required>
+                        <span class="input-group-text">單位</span>
+                    </div>
+                    <div class="formula-display">
+                        公式: 面積 = π × a × b
+                    </div>
+                </div>
+
+                <!-- 正多邊形輸入 -->
+                <div id="polygonInputs" class="dynamic-inputs">
+                    <label for="polygonSides" class="form-label">邊數</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="polygonSides" 
+                               placeholder="請輸入邊數" min="3" step="1" required>
+                        <span class="input-group-text">邊</span>
+                    </div>
+                    
+                    <label for="polygonSide" class="form-label">邊長</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" id="polygonSide" 
+                               placeholder="請輸入邊長" min="0.01" step="0.01" required>
+                        <span class="input-group-text">單位</span>
+                    </div>
+                    <div class="formula-display">
+                        公式: 面積 = (n × s² × cot(π/n)) / 4
+                    </div>
+                </div>
+
+                <!-- 兩點距離輸入 -->
+                <div id="distanceInputs" class="dynamic-inputs">
+                    <label class="form-label">第一個點 (x₁, y₁)</label>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <input type="number" class="form-control" id="x1" 
+                                   placeholder="x₁" step="0.01" required>
+                        </div>
+                        <div class="col">
+                            <input type="number" class="form-control" id="y1" 
+                                   placeholder="y₁" step="0.01" required>
+                        </div>
+                    </div>
+                    
+                    <label class="form-label">第二個點 (x₂, y₂)</label>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <input type="number" class="form-control" id="x2" 
+                                   placeholder="x₂" step="0.01" required>
+                        </div>
+                        <div class="col">
+                            <input type="number" class="form-control" id="y2" 
+                                   placeholder="y₂" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="formula-display">
+                        公式: 距離 = √[(x₂-x₁)² + (y₂-y₁)²]
+                    </div>
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+
+                <button type="button" class="btn-calculate" id="calculateBtn">
+                    <i class="fas fa-calculator"></i> 開始計算
+                </button>
+            </section>
+
+            <aside id="resultCard" class="result-card">
+                <h3 class="result-title">
+                    <i class="fas fa-check-circle"></i>
+                    計算結果
+                </h3>
+                <div class="result-value" id="resultValue">0</div>
+                <div class="result-unit" id="resultUnit"></div>
+            </aside>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 數學幾何計算器 | 使用 HTML5、CSS3、Bootstrap 5 與 JavaScript 製作</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+### 建立報名
+POST http://localhost:3001/api/signup
+Content-Type: application/json
+
+{
+  "name": "新同學",
+  "email": "new@example.com",
+  "phone": "0911222333"
+}
+
+### 取得清單（含分頁）
+GET http://localhost:3001/api/signup?page=1&limit=10
+
+### 更新（phone）
+PATCH http://localhost:3001/api/signup/69305989ed49b89d32dbb9d4
+Content-Type: application/json
+
+{
+  "phone": "0911000111"
+}
+
+### 刪除報名
+DELETE http://localhost:3001/api/signup/69305989ed49b89d32dbb9d4

@@ -1,0 +1,316 @@
+:root {
+    /* Steam Colors */
+    --stem-dark-blue: #171a21;
+    --stem-bg-main: #1b2838;
+    --stem-blue-highlight: #66c0f4;
+    --stem-text-main: #c6d4df;
+    --stem-text-muted: #8F98A0;
+    --stem-accent: #2a475e;
+    --stem-green: #a4d007;
+    /* For discount/price buttons */
+    --stem-green-hover: #b4ec08;
+
+    /* Gradients */
+    --grad-header: linear-gradient(to bottom, #171a21 0%, #1b2838 100%);
+    --grad-blue-highlight: linear-gradient(to right, #47bfff 0%, #1a9fff 100%);
+
+    /* Layout */
+    --max-width: 960px;
+    --font-main: "Motiva Sans", Sans-serif, "Helvetica Neue", Helvetica, Arial;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--stem-bg-main);
+    color: var(--stem-text-main);
+    font-family: var(--font-main);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: var(--stem-text-muted);
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #fff;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Global Nav */
+header {
+    background: var(--stem-dark-blue);
+    padding: 30px 0 0 0;
+    font-size: 14px;
+}
+
+.top-bar {
+    background: #171a21;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 0;
+    font-size: 12px;
+}
+
+.top-bar a {
+    margin-left: 10px;
+}
+
+.main-nav {
+    background: #3e6787;
+    background: linear-gradient(to bottom, #3e6787 0%, #2b4a63 100%);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    height: 60px;
+}
+
+.logo {
+    width: 176px;
+    height: 44px;
+    background-color: #171a21;
+    /* Placeholder for logo */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-right: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: #dcdedf;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 13px;
+    padding: 5px;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+/* Store Sub-Nav */
+.store-nav {
+    background: rgba(62, 103, 135, 0.5);
+    padding: 5px 0;
+    margin-bottom: 2rem;
+}
+
+.store-nav .container {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.store-nav a {
+    color: #e5e5e5;
+    font-size: 13px;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.store-nav a.active {
+    color: var(--stem-blue-highlight);
+}
+
+/* Featured Section */
+.featured-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.carousel-container {
+    position: relative;
+    background: #000;
+    box-shadow: 0 0 10px 1px #000;
+}
+
+.featured-item {
+    display: flex;
+    height: 350px;
+    background-image: url('https://picsum.photos/id/1018/1200/400');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.featured-content {
+    background: rgba(0, 0, 0, 0.4);
+    /* Fallback if we don't use grid/image split properly, 
+       but typically Steam has Big Image Left, Info Panel Right 
+    */
+    display: flex;
+    width: 100%;
+}
+
+.main-image {
+    flex: 2;
+    background-color: #000;
+    /* Placeholder */
+    background-image: url('https://picsum.photos/id/237/800/450');
+    background-size: cover;
+    box-shadow: inset -5px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.info-panel {
+    flex: 1;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%), #121922;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-title {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.mini-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.mini-screenshot {
+    height: 60px;
+    background-color: #333;
+    background-size: cover;
+}
+
+.purchase-area {
+    margin-top: auto;
+}
+
+.tag-list {
+    margin-bottom: 10px;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 5px;
+    font-size: 11px;
+    margin-right: 5px;
+    border-radius: 2px;
+}
+
+.price-box {
+    color: #fff;
+}
+
+.discount-price {
+    font-size: 15px;
+}
+
+/* Tabs & Grid */
+.tabs {
+    display: flex;
+    gap: 1px;
+    margin-bottom: 10px;
+}
+
+.tab {
+    padding: 8px 15px;
+    background: #2a475e;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.tab.active {
+    background: transparent;
+    color: #fff;
+    position: relative;
+    border-bottom: none;
+}
+
+.game-list-container {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.game-row {
+    display: flex;
+    background: rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+    padding: 5px;
+    align-items: center;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.game-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.game-row img {
+    width: 120px;
+    height: 45px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.game-row-info {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.game-name {
+    color: #c7d5e0;
+    font-size: 14px;
+}
+
+.game-tags {
+    font-size: 11px;
+    color: #384959;
+}
+
+.game-price {
+    color: #fff;
+    font-size: 13px;
+}
+
+.game-price.discount {
+    color: #a4d007;
+}
+
+.discount-badge {
+    background: #4c6b22;
+    color: #a4d007;
+    padding: 0 4px;
+    font-size: 12px;
+    margin-right: 5px;
+}
